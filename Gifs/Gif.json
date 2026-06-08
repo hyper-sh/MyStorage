@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Gif 1",
+    "url": "https://cdn.jsdelivr.net/gh/YOUR_USERNAME/gifs@main/gif1.gif"
+  },
+  {
+    "id": 2,
+    "name": "Gif 2",
+    "url": "https://cdn.jsdelivr.net/gh/YOUR_USERNAME/gifs@main/gif2.gif"
+  },
+  {
+    "id": 3,
+    "name": "Gif 3",
+    "url": "https://cdn.jsdelivr.net/gh/YOUR_USERNAME/gifs@main/gif3.gif"
+  }
+]
