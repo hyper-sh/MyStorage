@@ -7,11 +7,32 @@
   {
     "id": 2,
     "name": "Gif 2",
-    "url": "https://cdn.jsdelivr.net/gh/YOUR_USERNAME/gifs@main/gif2.gif"
+    "url": "https://github.com/hyper-sh/MyStorage/blob/5ffaba148114911d97e5eb5955fc26c7fad0316f/Gifs/Evil%20Eyes%20Dant%20GIF.gif?raw=true"
   },
   {
     "id": 3,
     "name": "Gif 3",
-    "url": "https://cdn.jsdelivr.net/gh/YOUR_USERNAME/gifs@main/gif3.gif"
+    "url": "https://github.com/hyper-sh/MyStorage/blob/main/Gifs/Glow%20Old%20School%20GIF.gif?raw=true"
   }
+  {
+    "id": 4,
+    "name": "Gif 4",
+    "url": "https://github.com/hyper-sh/MyStorage/blob/main/Gifs/Glow%20Old%20School%20GIF.gif?raw=true"
+  }
+  {
+    "id": 5,
+    "name": "Gif 5",
+    "url": "https://github.com/hyper-sh/MyStorage/blob/main/Gifs/cat-meow.gif?raw=true"
+  }
+  {
+    "id": 6,
+    "name": "Gif 6",
+    "url": "https://github.com/hyper-sh/MyStorage/blob/main/Gifs/evil2.gif?raw=true"
+  }
+  {
+    "id": 7,
+    "name": "Gif 7",
+    "url": "https://github.com/hyper-sh/MyStorage/blob/main/Gifs/naruto.gif?raw=true"
+  }
+  
 ]
