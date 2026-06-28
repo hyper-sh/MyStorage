@@ -3,9 +3,18 @@
     "version": "6.8.7",
     "date": "2026-06-28",
     "changes": [
-      "Added changelog bottom sheet from home menu",
-      "Fixed toolbar spacing after SystemUI restart",
-      "Improved lockscreen clock UI"
+      "Added Home Ui",
+      "Target SDK upgraded to Android 15 API Level 35 for better security, optimization, and Play Store compatibility.",
+      "Added a Featured Wallpapers Carousel at the top of the Wall Hub with peeking Material 3 mask animations.",
+      "Introduced a Home Screen Notification Badge and minimal dismissible Announcements bottom sheet.",
+      "Added a hamburger changelog bottom sheet that loads release notes from GitHub JSON.",
+      "Redesigned tap gestures with neutral, clean highlights on home buttons.",
+      "Modernized Rei header clock hooks for Android 11, 12, 13, 14, and 15.",
+      "Preserved existing header clock styles, custom image loading, custom text loading, margins, and centering options.",
+      "Fixed custom header clock showing in the wrong places and improved stock clock hiding.",
+      "Fixed navbar, toolbar, status bar overlap, and layout issues after SystemUI restart.",
+      "Refreshed the lockscreen clock customization UI while keeping all options available.",
+      "Fixed toolbar spacing after SystemUI restart"
     ]
   },
   {
