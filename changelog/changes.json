@@ -1,19 +1,19 @@
 [
   {
-    "version": "v2.4.0",
-    "versionCode": 24,
+    "version": "6.8.7",
     "date": "2026-06-28",
-    "title": "Major UI Update",
     "changes": [
-      "New Material You UI",
-      "Improved wallpaper loading",
-      "Added search",
-      "Performance improvements"
-    ],
-    "fixes": [
-      "Fixed crashes",
-      "Fixed memory leaks",
-      "Fixed animation glitches"
+      "Added changelog bottom sheet from home menu",
+      "Fixed toolbar spacing after SystemUI restart",
+      "Improved lockscreen clock UI"
+    ]
+  },
+  {
+    "version": "6.8.6",
+    "date": "2026-06-20",
+    "changes": [
+      "Fixed navbar overlap",
+      "Improved home fragment layout"
     ]
   }
 ]
