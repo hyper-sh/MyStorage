@@ -1,1 +1,19 @@
-
+[
+  {
+    "version": "v2.4.0",
+    "versionCode": 24,
+    "date": "2026-06-28",
+    "title": "Major UI Update",
+    "changes": [
+      "New Material You UI",
+      "Improved wallpaper loading",
+      "Added search",
+      "Performance improvements"
+    ],
+    "fixes": [
+      "Fixed crashes",
+      "Fixed memory leaks",
+      "Fixed animation glitches"
+    ]
+  }
+]
