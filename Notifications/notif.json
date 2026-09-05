@@ -1,8 +1,14 @@
 [
   {
+    "id": "2",
+    "title": "Introducing Clock Creator! ⏰",
+    "message": "Your lockscreen. Your style. Your clock. 🎨 Create completely custom lockscreen clocks with Clock Creator. Design from scratch and customize fonts, colors, images, sizes, positions, layers, and effects. Preview your creation live before applying it to your lockscreen. Turn your ideas into clocks and make your Android experience truly yours. ✨ Theme your reality.",
+    "date": "2026-09-05"
+  },
+  {
     "id": "1",
     "title": "Welcome to Rei Hub!",
-   "message": "Thank you for being part of Rei's journey. Whether you've been with us since the very beginning or just joined, your support, feedback, and encouragement made this release possible. This is only the beginning—more exciting features and improvements are on the way. ❤️",
+    "message": "Thank you for being part of Rei's journey. Whether you've been with us since the very beginning or just joined, your support, feedback, and encouragement made this release possible. This is only the beginning—more exciting features and improvements are on the way. ❤️",
     "date": "2026-06-28"
   }
 ]
