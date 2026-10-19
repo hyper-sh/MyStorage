@@ -1,0 +1,143 @@
+name: Sync private community catalog to public app mirror
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: private-community-mirror
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out public mirror
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check out private canonical repository
+        uses: actions/checkout@v4
+        with:
+          repository: abaddon-66/ReiCommunityClocks
+          ref: main
+          path: .private-community-source
+          token: ${{ secrets.COMMUNITY_SOURCE_READ_TOKEN }}
+          persist-credentials: false
+
+      - name: Validate canonical catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_dir=".private-community-source"
+          for required in \
+            community_clocks/index.json \
+            changelog/changes.json \
+            Notifications/notif.json; do
+            test -s "$source_dir/$required" || {
+              echo "Required canonical file is missing or empty: $required" >&2
+              exit 1
+            }
+          done
+          for directory in changelog community_clocks Gifs Images Notifications updates; do
+            test -d "$source_dir/$directory" || {
+              echo "Required canonical directory is missing: $directory" >&2
+              exit 1
+            }
+          done
+
+      - name: Mirror public app content
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_dir=".private-community-source"
+          for directory in changelog Gifs Images Notifications updates; do
+            mkdir -p "$directory"
+            rsync -a --delete "$source_dir/$directory/" "$directory/"
+          done
+
+          python3 - <<'PY'
+          import json
+          import re
+          import shutil
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          source_root = Path(".private-community-source")
+          public_root = Path(".")
+          source_clocks = source_root / "community_clocks"
+          public_clocks = public_root / "community_clocks"
+
+          # Only approved catalog entries and their referenced files are public.
+          # Pending submissions and unreferenced bundles stay in the private repo.
+          index = json.loads((source_clocks / "index.json").read_text(encoding="utf-8"))
+          if not isinstance(index, list):
+              raise SystemExit("Canonical community_clocks/index.json must be a JSON list")
+          approved = [entry for entry in index if entry.get("status") == "approved"]
+          if len(approved) != len(index):
+              raise SystemExit("The canonical public index contains a non-approved clock")
+
+          if public_clocks.exists():
+              shutil.rmtree(public_clocks)
+          public_clocks.mkdir(parents=True)
+          (public_clocks / "index.json").write_text(
+              json.dumps(approved, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          for entry in approved:
+              for field in ("packageUrl", "thumbnailUrl"):
+                  value = entry.get(field, "")
+                  path_part = urlparse(value).path
+                  marker = "/main/"
+                  if marker not in path_part:
+                      raise SystemExit(f"Approved clock has no canonical {field}")
+                  relative = path_part.split(marker, 1)[1]
+                  if ".." in Path(relative).parts or not relative.startswith("community_clocks/"):
+                      raise SystemExit(f"Unsafe canonical asset path in {field}")
+                  source_file = source_root / relative
+                  if not source_file.is_file():
+                      raise SystemExit(f"Approved clock asset is missing: {relative}")
+                  destination = public_root / relative
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(source_file, destination)
+
+          private_prefix = "https://raw.githubusercontent.com/abaddon-66/ReiCommunityClocks/main/"
+          public_prefix = "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/"
+
+          for root in (Path("community_clocks"), Path("Gifs"), Path("Images")):
+              for path in root.rglob("*.json"):
+                  content = path.read_text(encoding="utf-8")
+                  content = content.replace(private_prefix, public_prefix)
+                  content = re.sub(
+                      r"https://github\.com/abaddon-66/ReiCommunityClocks/blob/main/",
+                      public_prefix,
+                      content,
+                  )
+                  path.write_text(content, encoding="utf-8")
+          PY
+
+          if grep -R -I -n "raw.githubusercontent.com/abaddon-66/ReiCommunityClocks/main/" \
+            community_clocks Gifs Images; then
+            echo "A public catalog still contains private-repository asset URLs." >&2
+            exit 1
+          fi
+
+      - name: Commit mirror changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add changelog community_clocks Gifs Images Notifications updates
+          if git diff --cached --quiet; then
+            echo "The public mirror is already current."
+            exit 0
+          fi
+          git commit -m "Sync private community catalog"
+          git push origin HEAD:main
