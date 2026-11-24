@@ -1,0 +1,38 @@
+[
+  {
+    "id": "anime_weather",
+    "name": "Anime Weather",
+    "description": "20 adaptive anime weather scenes with automatic weather & day/night switching.",
+    "author": "Anime Weather custom edition",
+    "version": "1.0",
+    "sceneCount": 20,
+    "sizeBytes": 5949145,
+    "thumbnailUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/anime_weather/thumbnail.png",
+    "previewUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/anime_weather/preview.jpg",
+    "downloadUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/anime_weather/anime_weather.zip"
+  },
+  {
+    "id": "luffy_anime_weather",
+    "name": "Luffy Anime Weather",
+    "description": "Chibi pirate weather illustrations with automatic day/night and weather switching; adapted from FroggyWeather.",
+    "author": "Anime Weather custom edition (FroggyWeather by Leonardo Ledda)",
+    "version": "2.0",
+    "sceneCount": 20,
+    "sizeBytes": 20728601,
+    "thumbnailUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/luffy_anime_weather/thumbnail.png",
+    "previewUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/luffy_anime_weather/preview.jpg",
+    "downloadUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/luffy_anime_weather/luffy_anime_weather.zip"
+  },
+  {
+    "id": "zenitsu_anime_weather",
+    "name": "Zenitsu Anime Weather",
+    "description": "Demon Slayer Zenitsu chibi weather illustrations with automatic day/night and weather switching.",
+    "author": "Custom anime weather edition (Demon Slayer Zenitsu)",
+    "version": "1.0",
+    "sceneCount": 20,
+    "sizeBytes": 5140797,
+    "thumbnailUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/zenitsu_anime_weather/thumbnail.png",
+    "previewUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/zenitsu_anime_weather/preview.jpg",
+    "downloadUrl": "https://raw.githubusercontent.com/hyper-sh/MyStorage/main/weather_themes/zenitsu_anime_weather/zenitsu_anime_weather.zip"
+  }
+]
